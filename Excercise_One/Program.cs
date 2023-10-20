@@ -14,44 +14,33 @@ namespace Excercise_One
     {
         static void Main(string[] args)
         {
+            IFileHandler fileHandle = new TxtFilesHandler();
+            //IDataHandler dataHandle = new LogHandler();
 
-            //Find, choose and open a folder
-            Console.WriteLine("Give me the path...");
-            var path = Console.ReadLine();
-            Console.WriteLine();
-            var foldersInDirectory = FindFolders.GetFilesFromDirectory(path);
-
-            
-            var pathToLogs = SelectFolders.SelectFileToOpen(foldersInDirectory);
-            
-            //Αν παραπάνω επιλεγεί 4 ξεκινάω την διαχείρηση των logs
-            if (pathToLogs!=null)
+            try
             {
-                // Load log in list
-                var list = LogDataToList.GiveMeTheListOfTheLog(pathToLogs);
+                var pathOfFile = fileHandle.GiveMeThePath();
+                var list = fileHandle.GetListOfFilesFromDirectory(pathOfFile);
+                string pathOfLogs = fileHandle.SelectFileToOpenAndGiveMeThePath(list);
 
-                // Create and populate the Logs list
-                LogSetter setter = new LogSetter();
-                var logsList = setter.SetValues(list);
-
-                // Create and populate the Logs list
-                var usersList = UserExtractor.ExtractUsers(logsList);
-
-                
-                Queries.QuerriesOptions(usersList, logsList);
-
-
+                //var logsList = dataHandle.ConvertDataIntoList(pathOfLogs);
+                //dataHandle.GiveMeQuerriesOptions(logsList);
 
             }
+            catch
+            {
 
+                Console.WriteLine("Could not read file");
+            }
 
+            /*FilesHandler filehandler = new FilesHandler();
+            var pathOfFile = filehandler.GiveMeThePath();
+            var list = filehandler.GetListOfFilesFromDirectory(pathOfFile);
+            string pathOfLogs = filehandler.SelectFileToOpenAndGiveMeThePath(list);
 
-            //LogsQueries.ShowMeErrorLogs(logsList);
-            //LogsQueries.ShowMeWarningLogs(logsList);
-            //LogsQueries.ShowMeSucceededLogs(logsList);
-            //LogsQueries.ShowMeUsersNames(usersList);
-
-
+            LogHandler logHandler= new LogHandler();
+            var logsList = logHandler.ConvertDataIntoList(pathOfLogs);
+            logHandler.GiveMeQuerriesOptions(logsList);*/
         }
-        }
+    }
 }

@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extractors\DataExtraction.cs" />
-    <Compile Include="FileFinder\FindFolders.cs" />
+    <Compile Include="TxtFilesHandler.cs" />
+    <Compile Include="IDataHandler.cs" />
+    <Compile Include="IFileHandler.cs" />
+    <Compile Include="LogHandler.cs" />
     <Compile Include="Objects\LogData.cs" />
-    <Compile Include="LogHandling\LogDataToList.cs" />
-    <Compile Include="LogHandling\LogSetter.cs" />
-    <Compile Include="LogHandling\LogsQueries.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileFinder\SelectFolders.cs" />
-    <Compile Include="Extractors\UserExtractor.cs" />
     <Compile Include="Objects\Users.cs" />
-    <Compile Include="Queries.cs" />
+    <Compile Include="Objects\XMLData.cs" />
+    <Compile Include="XMLFilesHandler.cs" />
+    <Compile Include="XMLHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

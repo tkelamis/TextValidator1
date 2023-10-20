@@ -7,13 +7,45 @@ using System.Threading.Tasks;
 
 namespace Excercise_One
 {
-    public static class FindFolders
+    public class TxtFilesHandler : IFileHandler
     {
-        public static List<string> GetFilesFromDirectory(string pathName)
+        public string GiveMeThePath()
+        {
+            Console.WriteLine("Give me the path to the logs...");
+            var path = Console.ReadLine();
+            Console.WriteLine();
+            return path;
+        }
+
+        public string SelectFileToOpenAndGiveMeThePath(List<string> list)
+        {
+            var flagProgrammRunning = true;
+
+            while (flagProgrammRunning)
+            {
+                //Ζητάει ποιο θέλουμε να ανοίξουμε και το ανοίγω
+                Console.WriteLine("\nWhich logs file you want to draw data from???\n");
+                string input = Console.ReadLine();
+                var numberOfFileToOpen = Convert.ToInt32(input);
+                Console.WriteLine();
+                string pathOfFile = Path.GetFullPath(list[numberOfFileToOpen-1]);
+                if (File.Exists(pathOfFile) ) 
+                {
+                    flagProgrammRunning = false;
+                    return pathOfFile;
+                }
+                else
+                {
+                    Console.WriteLine("The file doesn't exist!!");
+                }
+            }
+            return null;
+        }
+
+        public List<string> GetListOfFilesFromDirectory(string pathName)
         {
             List<string> filesList = new List<string>();
             int count = 0;
-
 
             //'Ελεγχος εαν το given path υπάρχει
             while (!Directory.Exists(pathName))
