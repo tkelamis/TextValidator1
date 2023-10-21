@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+using System.Xml.Serialization;
+using Xml2CSharp;
 
 namespace Excercise_One
 {
@@ -14,33 +10,17 @@ namespace Excercise_One
     {
         static void Main(string[] args)
         {
-            IFileHandler fileHandle = new TxtFilesHandler();
-            //IDataHandler dataHandle = new LogHandler();
-
+            ILogReader logReader = new TxtLogReader();
             try
             {
-                var pathOfFile = fileHandle.GiveMeThePath();
-                var list = fileHandle.GetListOfFilesFromDirectory(pathOfFile);
-                string pathOfLogs = fileHandle.SelectFileToOpenAndGiveMeThePath(list);
-
-                //var logsList = dataHandle.ConvertDataIntoList(pathOfLogs);
-                //dataHandle.GiveMeQuerriesOptions(logsList);
-
+                var path = logReader.GetThePathLogs();
+                var logList = logReader.SetValues(path);
+                logReader.ManipulateData(logList);
             }
             catch
             {
-
-                Console.WriteLine("Could not read file");
+                Console.WriteLine("The file could not open!!");
             }
-
-            /*FilesHandler filehandler = new FilesHandler();
-            var pathOfFile = filehandler.GiveMeThePath();
-            var list = filehandler.GetListOfFilesFromDirectory(pathOfFile);
-            string pathOfLogs = filehandler.SelectFileToOpenAndGiveMeThePath(list);
-
-            LogHandler logHandler= new LogHandler();
-            var logsList = logHandler.ConvertDataIntoList(pathOfLogs);
-            logHandler.GiveMeQuerriesOptions(logsList);*/
         }
     }
 }

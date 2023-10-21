@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excercise_One
 {
-    public interface IFileHandler
+    public interface IMenu
     {
         string GiveMeThePath();
-        string SelectFileToOpenAndGiveMeThePath(List<string> list);
+        string SelectFileToOpenAndGiveMeItsPath(List<string> list);
         List<string> GetListOfFilesFromDirectory(string pathName);
+        void ChooseCategoryOfLogs(List<LogData> logList);
     }
 }

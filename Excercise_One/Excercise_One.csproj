@@ -43,17 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TxtFilesHandler.cs" />
-    <Compile Include="IDataHandler.cs" />
-    <Compile Include="IFileHandler.cs" />
-    <Compile Include="LogHandler.cs" />
-    <Compile Include="Objects\LogData.cs" />
+    <Compile Include="Abstarction\IMenu.cs" />
+    <Compile Include="Abstarction\ILogReader.cs" />
+    <Compile Include="XML\LetsXmL.cs" />
+    <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Data\LogData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects\Users.cs" />
-    <Compile Include="Objects\XMLData.cs" />
-    <Compile Include="XMLFilesHandler.cs" />
-    <Compile Include="XMLHandler.cs" />
+    <Compile Include="Data\Users.cs" />
+    <Compile Include="TXT\TxtLogReader.cs" />
+    <Compile Include="XML\XmlLogReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
